@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c4822cd1-a6c9-45b6-a93f-11d01af7fcf1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-    </list>
+    <list default="true" id="c4822cd1-a6c9-45b6-a93f-11d01af7fcf1" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,7 +54,7 @@
       <workItem from="1590604397750" duration="114000" />
       <workItem from="1590604533219" duration="35000" />
       <workItem from="1590604589898" duration="61000" />
-      <workItem from="1628041690289" duration="2954000" />
+      <workItem from="1628041690289" duration="3049000" />
     </task>
     <servers />
   </component>
@@ -65,9 +62,9 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="141" y="39" key="SettingsEditor" timestamp="1590604567453">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state x="-1252" y="-29" key="MultipleFileMergeDialog" timestamp="1628044804307">
+      <screen x="-1920" y="-280" width="1920" height="1080" />
     </state>
-    <state x="141" y="39" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1590604567453" />
+    <state x="-1252" y="-29" key="MultipleFileMergeDialog/0.0.1280.800/-1920.-280.1920.1080@-1920.-280.1920.1080" timestamp="1628044804307" />
   </component>
 </project>
