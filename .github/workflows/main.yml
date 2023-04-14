@@ -20,7 +20,7 @@ jobs:
 
     - name: Install packages
       run: |
-        apt update; apt -fy install wget curl openssh-client
+        apt update; apt -fy install wget curl openssh-client rsync
 
     - name: Setup SSH
       run: |
