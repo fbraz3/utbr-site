@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-#    container: php
+    container: php
 
     steps:
 
