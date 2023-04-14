@@ -38,3 +38,17 @@ jobs:
     - name: Upload packages to Server
       run: |
         rsync -pauvr --delete . ${{ secrets.DEST_SERVER_USER }}@${{ secrets.DEST_SERVER }}:${{ secrets.REMOTE_DIR }}
+
+    - name: Clear Clouflare cache - Domain 1
+      run: |
+        curl -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.TOKEN_CF_1 }}/purge_cache" \
+        -H "Authorization: Bearer ${{ secrets.CF_AUTH_BEARER }}" \
+        -H "Content-Type:application/json" \
+        --data '{"purge_everything":true}'
+
+    - name: Clear Clouflare cache - Domain 2
+      run: |
+        curl -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.TOKEN_CF_2 }}/purge_cache" \
+        -H "Authorization: Bearer ${{ secrets.CF_AUTH_BEARER }}" \
+        -H "Content-Type:application/json" \
+        --data '{"purge_everything":true}'
