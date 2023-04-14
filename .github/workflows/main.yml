@@ -38,6 +38,9 @@ jobs:
         rm -rf .git
         rm -rf .gitignore
         rm -rf .DS_Store
+        rm -rf .github
+        rm -rf LICENSE
+        rm -rf README.md
 
     - name: Upload packages to Server
       run: |
