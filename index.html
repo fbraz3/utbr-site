@@ -13,6 +13,12 @@
         <script src="https://kit.fontawesome.com/ec35284fbe.js" crossorigin="anonymous"></script>
         <link href='https://fonts.googleapis.com/css?family=Berkshire+Swash&display=swap&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <title>Unreal Tournament Brasil</title>
+
+        <style>
+            a {
+                color: rgb(130, 121, 121);
+            }
+        </style>
     </head>
 
     <body style="min-width: 1180px;">
@@ -63,7 +69,7 @@
     
                             <a href="#" class="btn btn-lg btn-d btn-glossy" data-scroll-speed="1000" onclick="scrollToTarget('#donwlo',this)">Downloads</a>
                             <a href="#" class="btn btn-lg btn-d btn-glossy" data-scroll-speed="1000" onclick="scrollToTarget('#server-list',this)">Servidores</a>
-                            <a href="#" class="btn btn-lg btn-d btn-glossy" data-scroll-speed="1000" onclick="scrollToTarget('#reviews',this)">Reviews</a>
+                            <a href="#" class="btn btn-lg btn-d btn-glossy" data-scroll-speed="1000" onclick="scrollToTarget('#online-playing',this)">Jogando Online</a>
                         </td>
                     </tr>
                 </table>
@@ -211,8 +217,8 @@
             </div>
         </div>
 
-        <!-- Informações dos games -->
-        <div id="reviews">
+        <!-- Como Jogar Online -->
+        <div id="online-playing">
             <!-- UT99 -->
             <div class="bloc bg-best-ideas-about-Black-on-Pinterest-Black-wallpaper-wp6003437 b-parallax none full-width-bloc tc-white bloc-fill-screen" id="ut99">
                 <div class="container">
@@ -224,11 +230,12 @@
                             <td style="border-left: 120px; padding-left: 15px; padding-right: 50px;">
                                 <h2 class="mg-md glow-t tc-white">Unreal Tournament 99</h2>
                                 <h3 class="mg-md">Review</h3>
-                                <p>O Unreal Tournament é o King of the Hill original no mundo dos jogos para múltiplos jogadores,
-                                    fragmentado ou fragmentado. Como o jogo indiscutível do ano de 1999, o Unreal Tournament pegou o
-                                    gênero de tiro em primeira pessoa pelo assento sujo de suas calças e o jogou pela sala com seus
-                                    gráficos nunca antes vistos, uma brutal jogabilidade na borda do seu lugar e uma lista de
-                                    recursos massiva e variada que deu aos jogadores mais do que eles esperavam.
+                                <p>Clássico imortal, o Unreal Tournament de 1999 permanece como um marco nos jogos de tiro em primeira pessoa. Sua jogabilidade frenética, mapas icônicos e variedade de armas oferecem uma experiência multiplayer viciante, deixando um legado duradouro na história dos FPS.</p>
+
+                                <h3 class="mg-md">Jogando Online</h3>
+                                <p>
+                                    Se você <a href="#" data-scroll-speed="1000" onclick="scrollToTarget('#donwlo',this)">baixou o jogo de nosso site</a>, não precisa fazer mais nada! basta <a href="#" data-scroll-speed="1000" onclick="scrollToTarget('#server-list',this)">escolher um dos servidores</a> e se divertir.<br/>
+                                    Se você instalou via Steam/GoG ou outra mídia, recomendamos baixar o <a href="https://github.com/OldUnreal/UnrealTournamentPatches/releases" target="_blank">patch 469</a> antes de começar a jogar.
                                 </p>
                             </td>
                         </tr>
@@ -244,14 +251,10 @@
                             <td style="width: 50%; border-left: 120px; padding-right: 15px; padding-left: 50px;">
                                 <h2 class="mg-md glow-t tc-white">Unreal Tournament 2004</h2>
                                 <h3 class="mg-md">Review</h3>
-                                <p>O Unreal Tournament 2004 é um jogo de tiro em primeira pessoa multiplayer que combina a
-                                    experiência de matar ou ser morto de um combate de gladiadores com tecnologia de ponta. Dez
-                                    modos de jogo - ambos baseados em equipes e "cada um por si" - oferecem aos jogadores mais
-                                    exigentes desafios de suar as mãos através de arenas internas incrivelmente detalhadas e vastos
-                                    ambientes externos. Como o gladiador tecnológico final do futuro, os jogadores terão seus
-                                    destinos em suas mãos, lutando contra até 32 outros jogadores online em arenas cheias de ação e
-                                    cheias de fragmentos.<br>
-                                </p>
+                                <p>Unreal Tournament 2004 elevou a franquia a novos patamares, mantendo a ação acelerada e adicionando modos de jogo inovadores. Com uma seleção expandida de armas e mapas, além do modo Assault cativante, o jogo continua sendo um ícone dos FPS multiplayer.</p>
+                                
+                                <h3 class="mg-md">Jogando Online</h3>
+                                <p>Com o encerramento do serviço GameSpy, é necessário a alteração de duas linhas no arquivo UT2004.ini, <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2902411820" target="_blank">este artigo no steam</a> explica com mais detalhes como efetuar a substituição</p>
                             </td>
                             <td style="border-left: 120px; padding-left: 15px; padding-right: 50px;">
                                 <img src="img/lazyload-ph.png" data-src="img/unreal_tournament_2004_by_andrewdoherty1981_d4xyatp-fullview.png" class="img-fluid img-rd-lg mx-auto d-block lazyload" alt="1479309709 2035455983"/>
@@ -272,13 +275,10 @@
                             <td style="border-left: 120px; padding-left: 15px; padding-right: 50px;">
                                 <h2 class="mg-md glow-t tc-white">Unreal Tournament 3</h2>
                                 <h3 class="mg-md">Review</h3>
-                                <p>O Unreal Tournament 3 da Epic, na verdade a quarta versão da série no PC, representa uma mistura
-                                    de elementos progressivos e da velha escola. É um aceno para os fãs da UT original, lançada em
-                                    1999, com o retorno de armas como o martelo de impacto e o executor, que substituem partes do
-                                    arsenal da UT 2004, como a pistola de proteção, a pistola de raios e a espingarda de assalto.
-                                    Indo além da carga balística, vemos a Epic avançando em seu empate mais distinto, o modo de
-                                    guerra, uma versão aumentada do ataque da UT 2004.
-                                </p>
+                                <p>Unreal Tournament 3 trouxe gráficos deslumbrantes e uma atualização moderna à série. Com novos modos de jogo e a adição do Warfare, elevou a estratégia multiplayer. Apesar de alguns problemas de balanceamento, permanece como uma adição sólida à franquia.</p>
+
+                                <h3 class="mg-md">Jogando Online</h3>
+                                <p>Mais um jogo afetado pelo encerramento do GameSpy, para este é necessário copiar um arquivo DLL para o diretorio de binários do jogo, maiores informações no <a href="https://github.com/chc/ut3-proxy/releases" target="_blank">GitHub</a></p>
                             </td>
                         </tr>
                     </table>
