@@ -113,3 +113,7 @@ docker-compose up  # Uses port 8080
 - **Commit style**: Conventional Commits (`feat:`, `fix:`, `docs:`, `chore:`)
 - **Portuguese content**: All user-facing text in Brazilian Portuguese
 - **Docker tags**: Always `latest` regardless of trigger source
+- **Bilingual documentation**: 
+  - `README.md`: Portuguese version (primary)
+  - `README-EN.md`: English version for international audience and Docker Hub
+  - **Important**: Any changes to documentation must be made in BOTH files to maintain consistency
