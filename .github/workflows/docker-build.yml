@@ -131,4 +131,4 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
         repository: fbraz3/utbr-site
         readme-filepath: ./README-EN.md
-        short-description: "Official website for the Brazilian Unreal Tournament community (https://utbr.cf) - Static site with game downloads, server listings, and community information"
+        short-description: "Official website for the Brazilian Unreal Tournament community (https://utbr.cf)"

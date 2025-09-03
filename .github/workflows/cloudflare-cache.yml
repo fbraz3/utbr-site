@@ -1,0 +1,58 @@
+name: Clear Cloudflare Cache
+
+on:
+  workflow_dispatch:
+
+jobs:
+  clear-cache:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Clear Cloudflare cache - Domain 1
+      run: |
+        echo "🧹 Clearing Cloudflare cache for Domain 1..."
+        RESPONSE=$(curl -s -w "%{http_code}" -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.TOKEN_CF_1 }}/purge_cache" \
+          -H "Authorization: Bearer ${{ secrets.CF_AUTH_BEARER }}" \
+          -H "Content-Type: application/json" \
+          --data '{"purge_everything":true}')
+        
+        HTTP_CODE="${RESPONSE: -3}"
+        BODY="${RESPONSE%???}"
+        
+        if [ "$HTTP_CODE" -eq 200 ]; then
+          echo "✅ Domain 1 cache cleared successfully"
+          echo "Response: $BODY"
+        else
+          echo "❌ Failed to clear Domain 1 cache (HTTP $HTTP_CODE)"
+          echo "Response: $BODY"
+          exit 1
+        fi
+
+    - name: Clear Cloudflare cache - Domain 2
+      run: |
+        echo "🧹 Clearing Cloudflare cache for Domain 2..."
+        RESPONSE=$(curl -s -w "%{http_code}" -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.TOKEN_CF_2 }}/purge_cache" \
+          -H "Authorization: Bearer ${{ secrets.CF_AUTH_BEARER }}" \
+          -H "Content-Type: application/json" \
+          --data '{"purge_everything":true}')
+        
+        HTTP_CODE="${RESPONSE: -3}"
+        BODY="${RESPONSE%???}"
+        
+        if [ "$HTTP_CODE" -eq 200 ]; then
+          echo "✅ Domain 2 cache cleared successfully"
+          echo "Response: $BODY"
+        else
+          echo "❌ Failed to clear Domain 2 cache (HTTP $HTTP_CODE)"
+          echo "Response: $BODY"
+          exit 1
+        fi
+
+    - name: Cache clear summary
+      run: |
+        echo "🎉 Cloudflare cache clearing completed successfully!"
+        echo "📝 Summary:"
+        echo "  - Domain 1: Cache cleared"
+        echo "  - Domain 2: Cache cleared"
+        echo "  - Trigger: Manual via workflow_dispatch"
+        echo "  - Date: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
