@@ -1,0 +1,22 @@
+# Git files
+.git
+.gitignore
+.github
+
+# Documentation
+README.md
+LICENSE
+*.md
+
+# IDE files
+.idea
+*.iml
+.DS_Store
+.vscode
+
+# Logs
+*.log
+
+# Docker files
+Dockerfile
+.dockerignore
