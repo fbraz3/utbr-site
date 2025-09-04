@@ -2,37 +2,40 @@
 
 ## Project Overview
 
-This is a **static HTML website** for the Brazilian Unreal Tournament community (UTBR). The site serves as a central hub for game downloads, server listings, and community information for classic Unreal Tournament games (UT99, UT2004, UT3).
+This is a **modern responsive website** for the Brazilian Unreal Tournament community (UTBR). The site serves as a central hub for game downloads, server listings, and community information for classic Unreal Tournament games (UT99, UT2004, UT3).
 
-**Key Change**: Recently migrated from rsync deployment to Docker-based containerization strategy.
+**Recent Major Update**: Site migrated from jQuery/Bootstrap legacy version to modern vanilla JavaScript with CSS Grid/Flexbox. The classic version is preserved for compatibility.
 
 ## Architecture & File Structure
 
-- **Single-page application**: Everything is contained in `index.html` with health check comment `<!-- UTBR-SITE-HEALTH-CHECK: Application is functional -->`
-- **Static assets**: CSS frameworks (Bootstrap, animate.css), images, and JavaScript libraries
-- **No backend**: Pure HTML/CSS/JS with external links for downloads and server stats
-- **Containerized deployment**: nginx:alpine Docker container serving static files
+- **Main application**: `index.html` - Modern responsive version (was `index-modern.html`)
+- **Legacy backup**: `index-classic.html` - Original Bootstrap/jQuery version
+- **Modern assets**: `css/modern-style.css`, `js/modern-script.js`
+- **Health check**: Comment marker `<!-- UTBR-SITE-HEALTH-CHECK: Application is functional -->`
+- **Containerized deployment**: nginx:alpine Docker container
 
 ### Key Files
-- `index.html`: Main page with health check marker for CI/CD testing
-- `Dockerfile`: Simple nginx:alpine setup copying files to `/usr/share/nginx/html/`
-- `docker-compose.yml`: Local development with port 8080:80 mapping
-- `.dockerignore`: Excludes docs, git files, and IDE configs from container
-- `js/scrollFX.js`: Custom Blocs framework scroll effects (jQuery-dependent)
+- `index.html`: **Main modern page** with health check marker and responsive design
+- `index-classic.html`: Legacy version for compatibility
+- `css/modern-style.css`: Modern CSS with custom properties, Grid, and Flexbox
+- `js/modern-script.js`: ES6+ vanilla JavaScript with performance optimizations
+- `Dockerfile`: nginx:alpine setup with `/classic/` route for legacy version
 
 ## Development Patterns
 
-### CSS Architecture
-- **BEM-like naming**: `.bloc`, `.bloc-lg`, `.bloc-fill-screen` for layout blocks
-- **Utility classes**: `.glow-t` (text glow), `.tc-white` (text color), `.bg-*` (backgrounds)
-- **Theme system**: `.d-bloc` (dark theme), `.l-bloc` (light theme)
-- **Responsive breakpoints**: 1024px, 991px, 767px, 575px
+### Modern CSS Architecture
+- **CSS Custom Properties**: `:root` variables for theming and consistency
+- **CSS Grid & Flexbox**: Modern layout without framework dependencies
+- **Mobile-first**: Responsive breakpoints with `@media` queries
+- **Performance optimized**: Minimal bundle size, zero external dependencies
+- **Gaming theme**: Dark colors, glow effects, and UT-inspired design
 
-### HTML Structure
-- **Health check integration**: Comment marker for automated testing
-- **Section-based layout**: Each major content area is a `.bloc` with full-screen potential
-- **Table layouts**: Used for complex multi-column content (downloads, servers)
-- **Lazy loading**: Images use `data-src` with `lazyload` class
+### Modern JavaScript Features
+- **ES6+ Classes**: Object-oriented architecture with `UTBRSite` main class
+- **Web APIs**: Intersection Observer for lazy loading and scroll animations
+- **Performance**: Throttled scroll events, debounced resize handlers
+- **Accessibility**: ARIA labels, keyboard navigation, screen reader support
+- **Gaming features**: Konami Code easter egg, heartbeat animations
 
 ## CI/CD & Deployment
 

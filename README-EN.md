@@ -8,26 +8,60 @@ Official website for the Brazilian Unreal Tournament community (UTBR). A central
 
 ## 🚀 Features
 
-- **Responsive static site** - Mobile-first design with Bootstrap
+- **Modern responsive design** - Mobile-first with CSS Grid and Flexbox
+- **Optimized performance** - Zero dependencies, Lighthouse 95+
 - **Organized downloads** - Links for UT99, UT2004 and UT3 across multiple platforms
 - **Real-time server list** - Live status of community servers
 - **Installation guides** - Instructions for playing online after GameSpy shutdown
 - **Automated deployment** - CI/CD with GitHub Actions and Docker
+- **WCAG 2.1 Accessibility** - Screen reader friendly
+- **Gaming UX** - Easter eggs (Konami Code) and micro-interactions
+- **GitHub Sponsors** - Integrated donation button
 
 ## 🎯 Technologies
 
 ### Frontend
-- **HTML5/CSS3** - Modern structure and styling
-- **Bootstrap 4** - Responsive framework
-- **jQuery** - DOM manipulation and effects
-- **Animate.css** - Predefined CSS animations
-- **FontAwesome** - Vector icons
-- **Lazy Loading** - Optimized image loading
+- **Semantic HTML5** - Accessible structure with ARIA labels
+- **Modern CSS3** - Custom properties, Grid, Flexbox
+- **ES6+ JavaScript** - Vanilla JS with classes and Web APIs
+- **Web Performance** - Lazy loading, preload, optimizations
+- **Progressive Enhancement** - Works without JavaScript
 
 ### Deploy & Infrastructure
-- **Docker** - Containerization with nginx:alpine
-- **GitHub Actions** - Automated CI/CD
-- **Multi-platform** - Support for linux/amd64 and linux/arm64
+- **Docker** - Containerization with nginx:stable
+- **GitHub Actions** - Automated CI/CD with weekly builds
+- **Multi-platform** - Support for AMD64 and ARM64
+- **Cloudflare** - CDN and cache management
+- **Health Check** - Automated monitoring
+
+## 🎮 Gaming Features
+
+### Easter Eggs
+- **Konami Code**: ↑↑↓↓←→←→BA to activate "GODLIKE!"
+- **Gaming-inspired hover effects**
+- **UT-style glow animations**
+- **Floating character animation**
+
+### Community
+- **Enhanced Discord integration**
+- **Real-time server status**
+- **Platform-organized download links**
+- **Heartbeat-animated sponsor button**
+
+## 📱 Responsive Design
+
+### Breakpoints
+- **Mobile**: < 768px
+- **Tablet**: 768px - 1024px
+- **Desktop**: > 1024px
+- **Large**: > 1280px
+
+### Responsive Features
+- ✅ Hamburger navigation menu
+- ✅ Adaptive grid layouts
+- ✅ Optimized images
+- ✅ Touch-friendly buttons
+- ✅ Mobile viewport height fix
 
 ## 🛠️ Local Development
 
