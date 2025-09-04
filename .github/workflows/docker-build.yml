@@ -123,12 +123,3 @@ jobs:
         tags: fbraz3/utbr-site:latest
         cache-from: type=gha
         cache-to: type=gha,mode=max
-
-    - name: Update Docker Hub description
-      uses: peter-evans/dockerhub-description@v4
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
-        repository: fbraz3/utbr-site
-        readme-filepath: ./README-EN.md
-        short-description: "Official website for the Brazilian Unreal Tournament community (https://utbr.cf)"

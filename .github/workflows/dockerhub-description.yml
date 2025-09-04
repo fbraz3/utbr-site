@@ -1,0 +1,37 @@
+name: Update Docker Hub Description
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths:
+      - 'README-EN.md'
+
+jobs:
+  update-description:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Update Docker Hub description
+      uses: peter-evans/dockerhub-description@v4
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+        repository: fbraz3/utbr-site
+        readme-filepath: ./README-EN.md
+        short-description: "Official UTBR site - downloads, servers and community. https://utbr.cf"
+
+    - name: Update summary
+      run: |
+        echo "📝 Docker Hub description updated successfully!"
+        echo "📋 Details:"
+        echo "  - Repository: fbraz3/utbr-site"
+        echo "  - Source file: README-EN.md"
+        echo "  - Trigger: ${{ github.event_name }}"
+        echo "  - Date: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+        echo ""
+        echo "🔗 View on Docker Hub: https://hub.docker.com/r/fbraz3/utbr-site"

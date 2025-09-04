@@ -48,6 +48,16 @@ This is a **static HTML website** for the Brazilian Unreal Tournament community 
    ```
 4. **Final deployment**: Multi-arch image push to `fbraz3/utbr-site:latest` only after tests pass
 
+### Docker Hub Description (`.github/workflows/dockerhub-description.yml`)
+- **Triggers**: Changes to `README-EN.md` or manual dispatch
+- **Process**: Updates Docker Hub repository description using English README
+- **Optimization**: Separated from build workflow to avoid unnecessary updates
+
+### Cache Management (`.github/workflows/cloudflare-cache.yml`)
+- **Trigger**: Manual dispatch only (`workflow_dispatch`)
+- **Usage**: Called from server via GitHub API using provided script
+- **Process**: Clears Cloudflare cache for both domains
+
 ### Legacy Workflow (`.github/workflows/main.yml`)
 - **Status**: Manual triggers only (push/PR triggers commented out)
 - **Process**: rsync deployment with Cloudflare cache clearing
