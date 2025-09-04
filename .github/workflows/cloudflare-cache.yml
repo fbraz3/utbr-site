@@ -56,3 +56,26 @@ jobs:
         echo "  - Domain 2: Cache cleared"
         echo "  - Trigger: Manual via workflow_dispatch"
         echo "  - Date: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+
+    - name: Wait for cache propagation
+      run: |
+        echo "⏳ Waiting 1 minute for cache propagation..."
+        sleep 60
+        echo "✅ Wait completed"
+
+    - name: Warm up cache
+      run: |
+        echo "🔥 Warming up cache for https://utbr.cf..."
+        RESPONSE=$(curl -qI https://utbr.cf 2>&1)
+        EXIT_CODE=$?
+        
+        if [ $EXIT_CODE -eq 0 ]; then
+          echo "✅ Cache warmed successfully"
+          echo "Response headers:"
+          echo "$RESPONSE" | head -10
+        else
+          echo "⚠️ Cache warming failed, but continuing..."
+          echo "Error: $RESPONSE"
+        fi
+        
+        echo "🎯 Cache warming completed"
