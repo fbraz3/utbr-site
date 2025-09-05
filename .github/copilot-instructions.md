@@ -4,22 +4,20 @@
 
 This is a **modern responsive website** for the Brazilian Unreal Tournament community (UTBR). The site serves as a central hub for game downloads, server listings, and community information for classic Unreal Tournament games (UT99, UT2004, UT3).
 
-**Recent Major Update**: Site migrated from jQuery/Bootstrap legacy version to modern vanilla JavaScript with CSS Grid/Flexbox. The classic version is preserved for compatibility.
+**Architecture**: Modern vanilla JavaScript with CSS Grid/Flexbox, zero external dependencies for optimal performance.
 
 ## Architecture & File Structure
 
-- **Main application**: `index.html` - Modern responsive version (was `index-modern.html`)
-- **Legacy backup**: `index-classic.html` - Original Bootstrap/jQuery version
+- **Main application**: `index.html` - Modern responsive version with health check marker
 - **Modern assets**: `css/modern-style.css`, `js/modern-script.js`
 - **Health check**: Comment marker `<!-- UTBR-SITE-HEALTH-CHECK: Application is functional -->`
-- **Containerized deployment**: nginx:alpine Docker container
+- **Containerized deployment**: nginx:stable Docker container
 
 ### Key Files
-- `index.html`: **Main modern page** with health check marker and responsive design
-- `index-classic.html`: Legacy version for compatibility
+- `index.html`: **Main responsive page** with health check marker and modern design
 - `css/modern-style.css`: Modern CSS with custom properties, Grid, and Flexbox
 - `js/modern-script.js`: ES6+ vanilla JavaScript with performance optimizations
-- `Dockerfile`: nginx:alpine setup with `/classic/` route for legacy version
+- `Dockerfile`: nginx:stable setup for containerized deployment
 
 ## Development Patterns
 
@@ -98,14 +96,14 @@ docker-compose up  # Uses port 8080
 
 ### External CDNs
 - **FontAwesome Kit**: `ec35284fbe.js` for icons (fallback: local fonts if CDN fails)
-- **Google Fonts**: Berkshire Swash decorative font
-- **GitHub Fork Ribbon**: CSS-only implementation
+- **Google Fonts**: Inter and Orbitron fonts
+- **GameTracker**: Server status banners and statistics
 
-### Local Libraries (Vendored)
-- **Bootstrap 4**: Core responsive framework
-- **jQuery 3.3.1**: Required for all custom scripts
-- **Animate.css**: Pre-built CSS animations (`animated`, `bounce`, `lightSpeedIn`)
-- **Blocs framework**: Custom scroll effects via `scrollFX.js`
+### Performance Optimizations
+- **Zero framework dependencies**: Pure vanilla JavaScript and CSS
+- **Preconnect hints**: Critical resources loaded faster
+- **Lazy loading**: Images loaded on demand
+- **Modern features**: ES6+, CSS Grid, Flexbox, Web APIs
 
 ## Testing & Quality Assurance
 
@@ -117,8 +115,8 @@ docker-compose up  # Uses port 8080
 ### Common Issues
 - **GameTracker banners**: May fail if servers offline (not a deployment issue)
 - **External links**: Download links from cloud providers may expire
-- **Mobile layout**: Test sub-tablet devices due to gaming audience
-- **JavaScript dependencies**: All custom scripts require jQuery to be loaded first
+- **Mobile layout**: Optimized for all device sizes with responsive breakpoints
+- **Performance**: Modern vanilla JavaScript provides optimal performance
 
 ## License & Conventions
 
