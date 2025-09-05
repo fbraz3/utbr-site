@@ -249,6 +249,10 @@ body {
     gap: var(--space-8);
 }
 
+.nav-mobile-links {
+    display: none; /* Hidden on desktop */
+}
+
 .nav-link {
     color: var(--text-secondary);
     text-decoration: none;
@@ -362,6 +366,7 @@ body {
         opacity: 0;
         visibility: hidden;
         transition: all var(--transition-normal);
+        z-index: 999; /* Ensure menu appears below github corner initially */
     }
     
     .nav-menu.active {
@@ -370,7 +375,54 @@ body {
         visibility: visible;
     }
     
+    .nav-mobile-links {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+        padding-top: var(--space-4);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: var(--space-2);
+    }
+    
+    .sponsor-mobile {
+        background: linear-gradient(135deg, #ea4aaa, #ff6b9d);
+        color: white !important;
+        padding: var(--space-3) var(--space-4);
+        border-radius: var(--border-radius);
+        text-align: center;
+        animation: heartbeat 2s ease-in-out infinite;
+    }
+    
+    .sponsor-mobile:hover {
+        background: linear-gradient(135deg, #d63384, #e91e63);
+        transform: scale(1.02);
+    }
+    
+    .github-mobile {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-secondary) !important;
+        padding: var(--space-3) var(--space-4);
+        border-radius: var(--border-radius);
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .github-mobile:hover {
+        background: var(--primary-color);
+        color: white !important;
+    }
+    
+    .sponsor-mobile i,
+    .github-mobile i {
+        margin-right: var(--space-2);
+    }
+    
     .nav-social {
+        display: none;
+    }
+    
+    /* Hide GitHub corner on mobile to prevent conflicts */
+    .github-corner {
         display: none;
     }
     
@@ -764,6 +816,12 @@ section {
 
 .servers {
     background: var(--bg-primary);
+    padding: var(--space-16) 0;
+}
+
+.servers .container {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
 }
 
 .servers-grid {
@@ -807,9 +865,8 @@ section {
     width: 100%;
     height: 100%;
     transition: transform var(--transition-normal);
-    padding-top: 25px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 25px 10px 0 10px;
+    box-sizing: border-box;
 }
 
 .server-banner a:hover {
@@ -1271,13 +1328,35 @@ section {
     border-radius: var(--border-radius);
 }
 
+/* Tablet and medium screen optimizations */
+@media (max-width: 1024px) {
+    .servers-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--space-5);
+    }
+    
+    .server-banner a {
+        padding: 20px 8px 0 8px;
+    }
+}
+
 /* Better mobile touch targets */
 @media (max-width: 768px) {
+    .servers {
+        padding: var(--space-12) 0;
+    }
+    
+    .servers .container {
+        padding-left: var(--space-3);
+        padding-right: var(--space-3);
+    }
+    
     .server-banner a {
         min-height: 44px;
         display: flex;
         align-items: center;
         justify-content: center;
+        padding: 20px 8px 0 8px;
     }
     
     .server-card {
@@ -1291,6 +1370,31 @@ section {
     .server-card:active {
         transform: scale(0.98);
         transition: transform 0.1s ease;
+    }
+}
+
+/* Small mobile screens optimizations */
+@media (max-width: 480px) {
+    .servers {
+        padding: var(--space-10) 0;
+    }
+    
+    .servers .container {
+        padding-left: var(--space-2);
+        padding-right: var(--space-2);
+    }
+    
+    .servers-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
+    
+    .server-banner a {
+        padding: 15px 6px 0 6px;
+    }
+    
+    .server-banner {
+        height: 100px;
     }
 }
 
