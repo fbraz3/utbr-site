@@ -15,6 +15,7 @@ class UTBRSite {
         this.setupLoader();
         this.setupLazyLoading();
         this.setupAnimations();
+        this.setupServerTracking();
         this.setupPerformanceOptimizations();
     }
 
@@ -512,6 +513,43 @@ class UTBRSite {
     }
 
     // Easter Eggs for the gaming community
+    setupServerTracking() {
+        // Track server banner clicks for analytics
+        const serverLinks = document.querySelectorAll('.server-banner a');
+        
+        serverLinks.forEach((link, index) => {
+            link.addEventListener('click', (e) => {
+                const serverName = link.closest('.server-card')?.querySelector('h3')?.textContent || `Server ${index + 1}`;
+                
+                // Optional: Send to analytics (Google Analytics, etc.)
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'server_click', {
+                        event_category: 'engagement',
+                        event_label: serverName,
+                        value: 1
+                    });
+                }
+                
+                // Console log for debugging
+                console.log(`🎮 Server clicked: ${serverName}`);
+                
+                // Add visual feedback for mobile
+                this.addClickFeedback(link);
+            });
+        });
+    }
+
+    addClickFeedback(element) {
+        // Add temporary visual feedback for better UX
+        element.style.transform = 'scale(0.95)';
+        element.style.opacity = '0.8';
+        
+        setTimeout(() => {
+            element.style.transform = '';
+            element.style.opacity = '';
+        }, 150);
+    }
+
     setupEasterEggs() {
         // Konami Code
         let konamiCode = [];
