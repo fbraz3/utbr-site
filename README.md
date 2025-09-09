@@ -236,10 +236,10 @@ O site é otimizado para:
 - **Facebook**: [Grupo Unreal Tournament Brasil](https://facebook.com/groups/utbr) - Notícias e discussões
 - **Steam**: [Guias UTBR](https://steamcommunity.com/groups/utbr) - Tutoriais e recursos
 
-## 👥 Créditos
+## �‍💻 Créditos
 
-- **Design**: PhilRJ (pmix2005@gmail.com)
-- **Infraestrutura**: Braz.cloud (fbraz3@gmail.com)
+- **Design**: [Braz.cloud](https://braz.cloud)
+- **Infraestrutura**: [Braz.cloud](https://braz.cloud)
 
 ## 📄 Licença
 

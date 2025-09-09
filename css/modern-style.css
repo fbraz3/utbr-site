@@ -740,18 +740,14 @@ section {
     height: 200px;
     overflow: hidden;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    box-sizing: border-box;
+    text-align: -webkit-center;
+    padding-top: 10px;
 }
 
 .game-image img {
     width: 180px !important;
-    height: auto;
-    max-height: 180px;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
     transition: transform var(--transition-slow);
 }
 
@@ -1227,16 +1223,6 @@ section {
         grid-template-columns: 1fr;
     }
     
-    .game-image {
-        height: 180px;
-        padding: 8px;
-    }
-    
-    .game-image img {
-        width: 160px !important;
-        max-height: 160px;
-    }
-    
     .servers-grid {
         grid-template-columns: 1fr;
         gap: var(--space-4);
@@ -1354,16 +1340,6 @@ section {
     .server-banner a {
         padding: 20px 8px 0 8px;
     }
-    
-    .game-image {
-        height: 180px;
-        padding: 8px;
-    }
-    
-    .game-image img {
-        width: 160px !important;
-        max-height: 160px;
-    }
 }
 
 /* Better mobile touch targets */
@@ -1421,16 +1397,6 @@ section {
     
     .server-banner {
         height: 100px;
-    }
-    
-    .game-image {
-        height: 150px;
-        padding: 6px;
-    }
-    
-    .game-image img {
-        width: 140px !important;
-        max-height: 140px;
     }
 }
 

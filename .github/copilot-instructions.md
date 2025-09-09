@@ -2,129 +2,88 @@
 
 ## Project Overview
 
-This is a **modern responsive website** for the Brazilian Unreal Tournament community (UTBR). The site serves as a central hub for game downloads, server listings, and community information for classic Unreal Tournament games (UT99, UT2004, UT3).
+This is a **modern responsive gaming website** for the Brazilian Unreal Tournament community (UTBR). The site serves as a central hub for game downloads, real-time server status, and community engagement for classic UT games (UT99, UT2004, UT3).
 
-**Architecture**: Modern vanilla JavaScript with CSS Grid/Flexbox, zero external dependencies for optimal performance.
+**Architecture**: Migrated from jQuery/Bootstrap to modern vanilla JavaScript with CSS Grid/Flexbox. Zero external dependencies for optimal performance and gaming-optimized UX.
 
-## Architecture & File Structure
+## Key Files & Structure
 
-- **Main application**: `index.html` - Modern responsive version with health check marker
-- **Modern assets**: `css/modern-style.css`, `js/modern-script.js`
-- **Health check**: Comment marker `<!-- UTBR-SITE-HEALTH-CHECK: Application is functional -->`
-- **Containerized deployment**: nginx:stable Docker container
-
-### Key Files
-- `index.html`: **Main responsive page** with health check marker and modern design
-- `css/modern-style.css`: Modern CSS with custom properties, Grid, and Flexbox
-- `js/modern-script.js`: ES6+ vanilla JavaScript with performance optimizations
-- `Dockerfile`: nginx:stable setup for containerized deployment
+```
+index.html              # Main SPA with health check marker
+css/modern-style.css    # CSS Grid/Flexbox with custom properties
+js/modern-script.js     # ES6+ UTBRSite class with Web APIs
+Dockerfile              # nginx:stable container
+.github/workflows/      # Multi-platform CI/CD with health checks
+```
 
 ## Development Patterns
 
-### Modern CSS Architecture
-- **CSS Custom Properties**: `:root` variables for theming and consistency
-- **CSS Grid & Flexbox**: Modern layout without framework dependencies
-- **Mobile-first**: Responsive breakpoints with `@media` queries
-- **Performance optimized**: Minimal bundle size, zero external dependencies
-- **Gaming theme**: Dark colors, glow effects, and UT-inspired design
+### CSS Architecture
+- **Custom Properties**: All spacing, colors, and breakpoints in `:root` variables
+- **Gaming Theme**: Dark background (`--bg-primary: #0a0a0a`), orange accent (`--primary-color: #ff6b35`), glow effects
+- **Responsive Strategy**: Mobile-first with `minmax()` grids that adapt from single column to multi-column
+- **Performance**: `will-change: transform` on animated elements, optimized image rendering
 
-### Modern JavaScript Features
-- **ES6+ Classes**: Object-oriented architecture with `UTBRSite` main class
-- **Web APIs**: Intersection Observer for lazy loading and scroll animations
-- **Performance**: Throttled scroll events, debounced resize handlers
-- **Accessibility**: ARIA labels, keyboard navigation, screen reader support
-- **Gaming features**: Konami Code easter egg, heartbeat animations
+### JavaScript Patterns
+- **Main Class**: `UTBRSite` handles all functionality through modular methods
+- **Event Management**: Throttled scroll (16ms), debounced resize (250ms) for performance
+- **Mobile Navigation**: GitHub corner hidden on mobile, sponsor/GitHub links integrated into hamburger menu
+- **Accessibility**: ARIA labels, keyboard navigation, focus indicators with `:focus-visible`
 
-## CI/CD & Deployment
+### Mobile-First Responsive Design
+```css
+/* Desktop */
+.servers-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
 
-### Docker Strategy (`.github/workflows/docker-build.yml`)
-1. **Triggers**: Weekly (Sunday 2AM UTC), push to master, manual dispatch
-2. **Multi-platform testing**: Separate builds for amd64 and arm64 with health checks
-3. **Testing process**:
-   ```bash
-   # Health check tests for each platform
-   curl -f http://localhost:8080 > /tmp/response.html
-   grep -q "UTBR-SITE-HEALTH-CHECK: Application is functional" /tmp/response.html
-   grep -q "Unreal Tournament Brasil" /tmp/response.html
-   ```
-4. **Final deployment**: Multi-arch image push to `fbraz3/utbr-site:latest` only after tests pass
+/* Mobile */
+@media (max-width: 768px) {
+  .servers-grid { grid-template-columns: 1fr; }
+  .github-corner { display: none; } /* Prevents menu conflicts */
+}
+```
 
-### Docker Hub Description (`.github/workflows/dockerhub-description.yml`)
-- **Triggers**: Changes to `README-EN.md` or manual dispatch
-- **Process**: Updates Docker Hub repository description using English README
-- **Optimization**: Separated from build workflow to avoid unnecessary updates
-
-### Cache Management (`.github/workflows/cloudflare-cache.yml`)
-- **Trigger**: Manual dispatch only (`workflow_dispatch`)
-- **Usage**: Called from server via GitHub API using provided script
-- **Process**: Clears Cloudflare cache for both domains
-
-### Legacy Workflow (`.github/workflows/main.yml`)
-- **Status**: Manual triggers only (push/PR triggers commented out)
-- **Process**: rsync deployment with Cloudflare cache clearing
-- **Use case**: Backup deployment method
+## Critical Workflows
 
 ### Local Development
 ```bash
-# Method 1: Direct browser (no server needed)
+# Direct browser (no server needed)
 open index.html
 
-# Method 2: Docker testing
+# Docker testing with health check
 docker build -t utbr-site . && docker run -p 8080:80 utbr-site
-
-# Method 3: Docker Compose
-docker-compose up  # Uses port 8080
+curl -f http://localhost:8080 | grep "UTBR-SITE-HEALTH-CHECK"
 ```
 
-## Content Management
+### CI/CD Pattern
+- **Health Check**: Must include `<!-- UTBR-SITE-HEALTH-CHECK: Application is functional -->` in HTML
+- **Multi-platform**: Separate AMD64/ARM64 builds with individual health verification
+- **Professional Branding**: All contact links use `braz.cloud` domain (not email addresses)
 
-### Server Information
-- **GameTracker integration**: Real-time server banners via external API
-- **Active domains**: `madruga.utbr.cf`, `x1.utbr.cf`, `copa.utbr.cf`, `2k4.utbr.cf`, `ut3.utbr.cf`
-- **Banner format**: `https://cache.gametracker.com/server_info/IP:PORT/b_560_95_1.png`
+## GameTracker Integration
 
-### Download Links
-- **External hosting**: Google Drive, MEGA, OneDrive (links may break periodically)
-- **Platform matrix**: UT99 (Win/Linux/Mac), UT2004 (Win/Mac), UT3 (Win only)
-- **Version notes**: Include bit architecture (32/64) in descriptions
+**Critical Pattern**: Real-time server banners with fallback handling
+```html
+<img src="https://cache.gametracker.com/server_info/madruga.utbr.cf:7777/b_560_95_1.png"
+     onerror="this.src='img/pageload-spinner.gif'; this.alt='Servidor temporariamente indisponível';">
+```
 
-### Community Integration
-- **Social platforms**: Facebook, WhatsApp, Discord with direct chat links
-- **GitHub integration**: Fork ribbon and corner widget for repository promotion
+**Domains**: `madruga.utbr.cf`, `x1.utbr.cf`, `copa.utbr.cf`, `2k4.utbr.cf`, `ut3.utbr.cf`
 
-## Key Dependencies
+## Project-Specific Conventions
 
-### External CDNs
-- **FontAwesome Kit**: `ec35284fbe.js` for icons (fallback: local fonts if CDN fails)
-- **Google Fonts**: Inter and Orbitron fonts
-- **GameTracker**: Server status banners and statistics
+### Gaming UX Features
+- **Konami Code**: ↑↑↓↓←→←→BA triggers "GODLIKE!" message
+- **Sponsor Button**: Pink gradient with heartbeat animation (`animation: heartbeat 2s ease-in-out infinite`)
+- **Server Cards**: Clickable banners with hover scale effects and loading shimmer
+
+### Content Guidelines
+- **Portuguese Content**: All user-facing text in Brazilian Portuguese
+- **Bilingual Docs**: Changes to `README.md` must be mirrored in `README-EN.md`
+- **Conventional Commits**: `feat:`, `fix:`, `docs:`, `chore:` format required
 
 ### Performance Optimizations
-- **Zero framework dependencies**: Pure vanilla JavaScript and CSS
-- **Preconnect hints**: Critical resources loaded faster
-- **Lazy loading**: Images loaded on demand
-- **Modern features**: ES6+, CSS Grid, Flexbox, Web APIs
+- **Preconnect**: GameTracker, Google Fonts, FontAwesome domains
+- **Image Loading**: `loading="lazy"` with shimmer effects during load
+- **CSS Grid**: Responsive without media queries using `minmax()` and `auto-fit`
 
-## Testing & Quality Assurance
-
-### Health Check System
-- **Marker**: `<!-- UTBR-SITE-HEALTH-CHECK: Application is functional -->` in HTML
-- **CI Tests**: HTTP response + content verification for essential sections
-- **Local testing**: `docker run` + `curl` to verify nginx serving correctly
-
-### Common Issues
-- **GameTracker banners**: May fail if servers offline (not a deployment issue)
-- **External links**: Download links from cloud providers may expire
-- **Mobile layout**: Optimized for all device sizes with responsive breakpoints
-- **Performance**: Modern vanilla JavaScript provides optimal performance
-
-## License & Conventions
-
-- **License**: Apache 2.0 (commercial-friendly, patent protection)
-- **Commit style**: Conventional Commits (`feat:`, `fix:`, `docs:`, `chore:`)
-- **Portuguese content**: All user-facing text in Brazilian Portuguese
-- **Docker tags**: Always `latest` regardless of trigger source
-- **Bilingual documentation**: 
-  - `README.md`: Portuguese version (primary)
-  - `README-EN.md`: English version for international audience and Docker Hub
-  - **Important**: Any changes to documentation must be made in BOTH files to maintain consistency
+When editing this codebase, maintain the gaming aesthetic, ensure mobile-first responsive design, and preserve the health check marker for CI/CD functionality.

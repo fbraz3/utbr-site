@@ -232,10 +232,10 @@ The site is optimized for:
 - **Facebook**: [Unreal Tournament Brazil Group](https://facebook.com/groups/utbr) - News and discussions
 - **Steam**: [UTBR Guides](https://steamcommunity.com/groups/utbr) - Tutorials and resources
 
-## 👥 Credits
+## �‍💻 Credits
 
-- **Design**: PhilRJ (pmix2005@gmail.com)
-- **Infrastructure**: Braz.cloud (fbraz3@gmail.com)
+- **Design**: [Braz.cloud](https://braz.cloud)
+- **Infrastructure**: [Braz.cloud](https://braz.cloud)
 
 ## 📄 License
 
